@@ -1,0 +1,26 @@
+.dropdown-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 5px;
+    padding-left: 10px;
+    text-align: left;
+
+}
+
+.fa-square-minus {
+    font-size: large;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+span {
+    margin-left: 10px;
+}
+
+.dropdown-menu {
+    padding: 0;
+
+}

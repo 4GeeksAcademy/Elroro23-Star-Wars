@@ -1,0 +1,10 @@
+.home.text-center {
+    margin: 0;
+    padding: 0;
+    background-image: url("https://www.xtrafondos.com/wallpapers/stormtrooper-star-wars-1629.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* Asegúrate de que el fondo cubra al menos la altura de la ventana */
+}

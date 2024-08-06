@@ -1,0 +1,75 @@
+.card-container {
+    display: flex;
+    overflow-x: auto;
+    /* Permite el desplazamiento horizontal si hay desbordamiento */
+    padding: 10px;
+
+}
+
+.buttons {
+    display: flex;
+    justify-content: right;
+}
+
+.fa-regular {
+    color: white;
+    font-size: x-large;
+}
+
+.fa-circle-question {
+    margin-right: 20px
+}
+
+.fa-star {
+    cursor: pointer;
+}
+
+h3 {
+    color: rgb(231 227 40);
+
+}
+
+h1 {
+    color: black;
+}
+
+.title {
+
+    background-color: white;
+    opacity: 0.7;
+}
+
+.card-text {
+    color: white;
+}
+
+.card {
+    flex: 0 1 auto;
+    /* Evita que las tarjetas se estiren o compriman */
+    margin: 10px;
+    /* Espacio entre tarjetas */
+    opacity: 0.8;
+    /* valor para más o menos transparencia */
+    width: 25rem;
+    box-shadow: 0px 0px 20px 5px #0B0B0B;
+    /*Estilo de sombra*/
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.card-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.card-container::-webkit-scrollbar-thumb {
+    background: rgb(231 227 40);
+    border-radius: 4px;
+
+}
+
+.card-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.497);
+}
+
+.card-deck {
+    display: flex;
+}
