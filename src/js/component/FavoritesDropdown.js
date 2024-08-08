@@ -6,9 +6,9 @@ const FavoritesDropdown = () => {
     const { actions, store } = useContext(Context); //Traemos el contexto.
     const favorites = store.favorites; //Traemos el array favorites.
     const favoritesCount = favorites.length; //Obtenemos el número de elementos de favorites.
-    const handleRemoveFavorite = (uid) => {
+    const handleRemoveFavorite = (name) => {
         event.stopPropagation(); //Está función evita que el dropdown se cierre luego de eliminar un item.
-        actions.deleteFavorites(uid) //Llamamos a la función de eliminar item de favorites.
+        actions.deleteFavorites(name) //Llamamos a la función de eliminar item de favorites.
     };
     return (
         <div className="btn-group dropstart">
@@ -30,9 +30,8 @@ const FavoritesDropdown = () => {
                                 <a className="dropdown-item"
                                     href="#">{item.name}</a>
                                 <i className="fa-regular fa-square-minus" //Definimos un evento con la función de eliminar con el uid como parámetro
-                                    onClick={() => handleRemoveFavorite(item.uid)}
-                                    style={{ cursor: "pointer" }}
-                                ></i>
+                                    onClick={() => handleRemoveFavorite(item.name)}
+                            ></i>
                             </li>
                         )
                     })

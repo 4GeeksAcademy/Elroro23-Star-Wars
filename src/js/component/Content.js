@@ -6,9 +6,17 @@ import { Link } from 'react-router-dom';
 const Content = () => {
     const { actions, store } = useContext(Context) //Traemos el contexto: store, actions.
 
-    const handleAddFavorite = (uid) => { //Función para agregar un item a favoritos por su id.
-        actions.addFavorites(uid)
-    }
+    const isFavorite = (name) => { //Verificamos si el nombre del item ya está en favoritos.
+        //El método .some() verifica si algún item coincide con el nombre proporcionado, si es así devuelve true.
+            return store.favorites.some(item => item.name === name);
+        };
+    const handleToggleFavorites = (name) => { //Función para agregar y eliminar item por su NAME(con el uid hay conflictos).
+        if (isFavorite(name)) { //Verificamos si ya está el item, si es true se elimina, si es false lo agregamos.
+            actions.deleteFavorites(name); //función para eliminar
+        } else {
+            actions.addFavorites(name); //función para agregar.
+        }
+    };
 
 
     return (
@@ -28,8 +36,9 @@ const Content = () => {
                                         <Link to={`/details/people/${person.uid}`}> {/*Nos lleva a los detalles de cada item por su id y categoria: people, planets, starships*/}
                                             <i className="fa-regular fa-circle-question"></i>
                                         </Link>
-                                        <i className="fa-regular fa-star"
-                                            onClick={() => handleAddFavorite(person.uid)}></i> {/*id unico de cada elemento*/}
+                                        <i 
+                                            className={`fa-regular fa-star ${isFavorite(person.name) ? "favo" : ""}`}
+                                            onClick={() => handleToggleFavorites(person.name)}></i> {/*name unico de cada elemento*/}
                                     </div>
                                 </div>
                             </div>
@@ -53,8 +62,9 @@ const Content = () => {
                                         <Link to={`/details/planets/${planet.uid}`}>
                                             <i className="fa-regular fa-circle-question"></i>
                                         </Link>
-                                        <i className="fa-regular fa-star"
-                                            onClick={() => handleAddFavorite(planet.uid)}></i>
+                                        <i 
+                                            className={`fa-regular fa-star ${isFavorite(planet.name) ? "favo" : ""}`}
+                                            onClick={() => handleToggleFavorites(planet.name)}></i>
                                     </div>
                                 </div>
                             </div>
@@ -78,8 +88,9 @@ const Content = () => {
                                         <Link to={`/details/starships/${starship.uid}`}>
                                             <i className="fa-regular fa-circle-question"></i>
                                         </Link>
-                                        <i className="fa-regular fa-star"
-                                            onClick={() => handleAddFavorite(starship.uid)}></i>
+                                        <i 
+                                            className={`fa-regular fa-star ${isFavorite(starship.name) ? "favorite" : ""}`} 
+                                            onClick={() => handleToggleFavorites(starship.name)}></i>
 
                                     </div>
                                 </div>

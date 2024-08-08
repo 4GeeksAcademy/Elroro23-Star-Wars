@@ -1,0 +1,22 @@
+.fa-github {
+    color: black;
+    font-size: x-large;
+    margin-left: 5px;
+    cursor: pointer;
+    
+}
+
+.clic {
+    justify-content: right;
+    font-family: Orbitron;
+    font-size: 20px;
+    margin-right: 10px;
+
+}
+
+.copy {
+    text-align: left;
+    font-family: Orbitron;
+    font-size: 20px;
+    margin-left: 10px;
+}

@@ -11,17 +11,22 @@
     justify-content: right;
 }
 
-.fa-regular {
+.fa-star {
     color: white;
-    font-size: x-large;
+    font-size: xx-large;
+    cursor: pointer;
 }
 
 .fa-circle-question {
-    margin-right: 20px
+    margin-right: 20px;
+    color: white;
+    font-size: xx-large;
+    cursor: pointer;
 }
 
-.fa-star {
-    cursor: pointer;
+
+.favo {
+    color: rgb(231 227 40) !important;
 }
 
 h3 {

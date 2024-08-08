@@ -14,23 +14,28 @@ const Details = () => {
   const planet = store.planets.find(planet => planet.uid === uid)
   const starship = store.starships.find(starship => starship.uid === uid);
 
-  const handleAddFavorite = (uid) => { //Llamamos a la función para agregar a favorites mediante su id.
-    actions.addFavorites(uid);
+  const handleAddFavorite = (name) => { //Llamamos a la función para agregar a favorites mediante su id.
+    actions.addFavorites(name);
   }
   //Llamamos a esta función para obtener los detalles de cada item y la ejecutamos solo cuando se monta useEffect(cuando hacemos clic a details).
   useEffect(() => {
     actions.getDetails(category, uid)
 
   }, [])
+  
+  const isFavorite = (name) => { //Verificamos si el nombre del item ya está en favoritos.
+    //El método .some() verifica si algún item coincide con el nombre proporcionado, si es así devuelve true.
+        return store.favorites.some(item => item.name === name);
+    };
 
-  /*const imgPeople = (`https://starwars-visualguide.com/assets/img/characters/${person.uid}`)*/
+  
   return (
     <div className="container">
 
       {/*Si pertenece a la categoria "people" y "properties" existe muestra las siguientes propiedades sino no muestres nada*/}
       {category === "people" && store.details.hasOwnProperty("properties") ? (
         <>
-          <div className="card bg-dark text-white">
+          <div className="card bg-dark text-white"style={{width: "60%", height: "700px"}}>
             {/*Construimos dinámicamente la url para que muestre una imagen para cada personaje basandose en su id*/}
             <img src={`https://starwars-visualguide.com/assets/img/characters/${uid}.jpg`}
               className="card-img" alt={`${store.details.properties.name}`}
@@ -48,8 +53,8 @@ const Details = () => {
               <p className="card-text">Gender: {store.details.properties.gender}</p>
               <p className="card-text">Homeworld: {store.details.properties.homeworld}</p>
               <div className="fav">
-                <i className="fa-regular fa-star"
-                  onClick={() => handleAddFavorite(person.uid)}></i>
+                <i className={`fa-regular fa-star ${isFavorite(person.name) ? "favo" : ""}`}
+                  onClick={() => handleAddFavorite(person.name)}></i>
               </div>
             </div>
           </div>
@@ -58,7 +63,7 @@ const Details = () => {
       {/*Si pertenece a la categoria "planet" y "properties" existe muestra las siguientes propiedades sino no muestres nada*/}
       {category === "planets" && store.details.hasOwnProperty("properties") ? (
         <>
-          <div className="card bg-dark text-white">
+          <div className="card bg-dark text-white"style={{width: "60%", height: "60%"}}>
             <img src={`https://starwars-visualguide.com/assets/img/planets/${uid}.jpg`}
               className="card-img" alt={`${store.details.properties.name}`}
               onError={(e) => e.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"} />
@@ -74,8 +79,8 @@ const Details = () => {
               <p className="card-text">Terrain: {store.details.properties.terrain}</p>
               <p className="card-text">Surface water: {store.details.properties.surface_water}</p>
               <div className="fav">
-                <i className="fa-regular fa-star"
-                  onClick={() => handleAddFavorite(person.uid)}></i>
+                <i className={`fa-regular fa-star ${isFavorite(planet.name) ? "favo" : ""}`}
+                  onClick={() => handleAddFavorite(planet.name)}></i>
               </div>
             </div>
           </div>
@@ -84,7 +89,7 @@ const Details = () => {
       {/*Si pertenece a la categoria "starships" y "properties" existe muestra las siguientes propiedades sino no muestres nada*/}
       {category === "starships" && store.details.hasOwnProperty("properties") ? (
         <>
-          <div className="card bg-dark text-white">
+          <div className="card bg-dark text-white" style={{width: "60%", height: "900px"}}>
             <img src={`https://starwars-visualguide.com/assets/img/starships/${uid}.jpg`}
               className="card-img" alt={`${store.details.properties.name}`}
               onError={(e) => e.target.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg"} />
@@ -104,8 +109,8 @@ const Details = () => {
               <p className="card-text">Consumables: {store.details.properties.consumables}</p>
               <p className="card-text">Pilots: 6</p>
               <div className="fav">
-                <i className="fa-regular fa-star"
-                  onClick={() => handleAddFavorite(person.uid)}></i>
+                <i className={`fa-regular fa-star ${isFavorite(starship.name) ? "favo" : ""}`}
+                  onClick={() => handleAddFavorite(starship.name)}></i>
               </div>
             </div>
           </div>
